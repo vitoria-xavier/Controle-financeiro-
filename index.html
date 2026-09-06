@@ -1,4 +1,3 @@
-
 <!DOCTYPE html>
 <html lang="pt-BR">
 
@@ -19,7 +18,40 @@
         Meu primeiro projeto desenvolvido durante meus estudos
         de Análise e Desenvolvimento de Sistemas.
     </p>
-<script src="script.js"></script>
+
+    <h2>Novo lançamento</h2>
+
+    <form>
+
+        <label for="descricao">Descrição</label>
+        <input
+            type="text"
+            id="descricao"
+            placeholder="Ex: Salário"
+        >
+
+        <label for="valor">Valor</label>
+        <input
+            type="number"
+            id="valor"
+            placeholder="Ex: 1500"
+        >
+
+        <label for="tipo">Tipo</label>
+
+        <select id="tipo">
+            <option value="receita">Receita</option>
+            <option value="despesa">Despesa</option>
+        </select>
+
+        <button type="submit">
+            Adicionar lançamento
+        </button>
+
+    </form>
+
+    <script src="script.js"></script>
+
 </body>
 
 </html>
