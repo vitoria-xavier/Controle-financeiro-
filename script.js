@@ -1,5 +1,8 @@
 const formulario = document.querySelector("form");
 const listaLancamentos = document.querySelector("#lista-lancamentos");
+
+const totalReceitasElemento = document.querySelector("#total-receitas");
+const totalDespesasElemento = document.querySelector("#total-despesas");
 const saldoElemento = document.querySelector("#saldo");
 
 let lancamentos = JSON.parse(localStorage.getItem("lancamentos")) || [];
@@ -8,7 +11,8 @@ function atualizarTela() {
 
     listaLancamentos.innerHTML = "";
 
-    let saldo = 0;
+    let totalReceitas = 0;
+    let totalDespesas = 0;
 
     lancamentos.forEach(function(lancamento, index) {
 
@@ -22,13 +26,18 @@ function atualizarTela() {
             lancamento.tipo;
 
         if (lancamento.tipo === "receita") {
+
             novoLancamento.style.color = "green";
             novoLancamento.style.backgroundColor = "#e8f5e9";
-            saldo += lancamento.valor;
+
+            totalReceitas += lancamento.valor;
+
         } else {
+
             novoLancamento.style.color = "red";
             novoLancamento.style.backgroundColor = "#ffebee";
-            saldo -= lancamento.valor;
+
+            totalDespesas += lancamento.valor;
         }
 
         const botaoExcluir = document.createElement("button");
@@ -54,6 +63,14 @@ function atualizarTela() {
 
     });
 
+    const saldo = totalReceitas - totalDespesas;
+
+    totalReceitasElemento.textContent =
+        "Receitas: R$ " + totalReceitas.toFixed(2);
+
+    totalDespesasElemento.textContent =
+        "Despesas: R$ " + totalDespesas.toFixed(2);
+
     saldoElemento.textContent =
         "Saldo: R$ " + saldo.toFixed(2);
 }
@@ -72,7 +89,11 @@ formulario.addEventListener("submit", function(event) {
         document.querySelector("#tipo").value;
 
     if (descricao === "" || valor <= 0) {
-        alert("Preencha a descrição e informe um valor maior que zero.");
+
+        alert(
+            "Preencha a descrição e informe um valor maior que zero."
+        );
+
         return;
     }
 
