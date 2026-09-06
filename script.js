@@ -15,9 +15,11 @@ formulario.addEventListener("submit", function(event) {
     const novoLancamento = document.createElement("li");
 
     if (tipo === "receita") {
-        novoLancamento.classList.add("receita");
-    } else {
-        novoLancamento.classList.add("despesa");
+    novoLancamento.style.color = "green";
+    novoLancamento.style.backgroundColor = "#e8f5e9";
+} else {
+    novoLancamento.style.color = "red";
+    novoLancamento.style.backgroundColor = "#ffebee";
     }
 
     novoLancamento.textContent =
