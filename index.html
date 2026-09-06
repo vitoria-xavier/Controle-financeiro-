@@ -1,72 +1,120 @@
 
+const formulario = document.querySelector("form");
+const listaLancamentos = document.querySelector("#lista-lancamentos");
 
-<!DOCTYPE html>
-<html lang="pt-BR">
+const totalReceitasElemento = document.querySelector("#total-receitas");
+const totalDespesasElemento = document.querySelector("#total-despesas");
+const saldoElemento = document.querySelector("#saldo");
 
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+let lancamentos = JSON.parse(localStorage.getItem("lancamentos")) || [];
 
-    <title>Controle Financeiro</title>
+function atualizarTela() {
 
-    <link rel="stylesheet" href="style.css">
-</head>
+    listaLancamentos.innerHTML = "";
 
-<h1>Controle Financeiro</h1>
+    let totalReceitas = 0;
+    let totalDespesas = 0;
 
-<div id="resumo">
+    lancamentos.forEach(function(lancamento, index) {
 
-    <h2>Resumo financeiro</h2>
+        const novoLancamento = document.createElement("li");
 
-    <p id="total-receitas">Receitas: R$ 0,00</p>
+        novoLancamento.textContent =
+            lancamento.descricao +
+            " - R$ " +
+            lancamento.valor.toFixed(2) +
+            " - " +
+            lancamento.tipo;
 
-    <p id="total-despesas">Despesas: R$ 0,00</p>
+        if (lancamento.tipo === "receita") {
 
-    <p id="saldo">Saldo: R$ 0,00</p>
+            novoLancamento.style.color = "green";
+            novoLancamento.style.backgroundColor = "#e8f5e9";
 
-</div>
-    <p>
-        Meu primeiro projeto desenvolvido durante meus estudos
-        de Análise e Desenvolvimento de Sistemas.
-    </p>
+            totalReceitas += lancamento.valor;
 
-    <h2>Novo lançamento</h2>
+        } else {
 
-    <form>
+            novoLancamento.style.color = "red";
+            novoLancamento.style.backgroundColor = "#ffebee";
 
-        <label for="descricao">Descrição</label>
-        <input
-            type="text"
-            id="descricao"
-            placeholder="Ex: Salário"
-        >
+            totalDespesas += lancamento.valor;
+        }
 
-        <label for="valor">Valor</label>
-        <input
-            type="number"
-            id="valor"
-            placeholder="Ex: 1500"
-        >
+        const botaoExcluir = document.createElement("button");
 
-        <label for="tipo">Tipo</label>
+        botaoExcluir.textContent = "🗑️ Excluir";
 
-        <select id="tipo">
-            <option value="receita">Receita</option>
-            <option value="despesa">Despesa</option>
-        </select>
+        botaoExcluir.addEventListener("click", function() {
 
-        <button type="submit">
-            Adicionar lançamento
-        </button>
+            lancamentos.splice(index, 1);
 
-    </form>
+            localStorage.setItem(
+                "lancamentos",
+                JSON.stringify(lancamentos)
+            );
 
-    <h2>Lançamentos</h2>
+            atualizarTela();
 
-    <ul id="lista-lancamentos"></ul>
+        });
 
-    <script src="script.js"></script>
+        novoLancamento.appendChild(botaoExcluir);
 
-</body>
+        listaLancamentos.appendChild(novoLancamento);
 
-</html>
+    });
+
+    const saldo = totalReceitas - totalDespesas;
+
+    totalReceitasElemento.textContent =
+        "Receitas: R$ " + totalReceitas.toFixed(2);
+
+    totalDespesasElemento.textContent =
+        "Despesas: R$ " + totalDespesas.toFixed(2);
+
+    saldoElemento.textContent =
+        "Saldo: R$ " + saldo.toFixed(2);
+}
+
+formulario.addEventListener("submit", function(event) {
+
+    event.preventDefault();
+
+    const descricao =
+        document.querySelector("#descricao").value.trim();
+
+    const valor =
+        Number(document.querySelector("#valor").value);
+
+    const tipo =
+        document.querySelector("#tipo").value;
+
+    if (descricao === "" || valor <= 0) {
+
+        alert(
+            "Preencha a descrição e informe um valor maior que zero."
+        );
+
+        return;
+    }
+
+    const novoLancamento = {
+        descricao: descricao,
+        valor: valor,
+        tipo: tipo
+    };
+
+    lancamentos.push(novoLancamento);
+
+    localStorage.setItem(
+        "lancamentos",
+        JSON.stringify(lancamentos)
+    );
+
+    atualizarTela();
+
+    formulario.reset();
+
+});
+
+atualizarTela();
