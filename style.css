@@ -1,14 +1,45 @@
+
 body {
     font-family: Arial, sans-serif;
-    background-color: #f4f6f8;
-    margin: 0;
-    padding: 40px;
+    max-width: 600px;
+    margin: 40px auto;
+    padding: 20px;
 }
 
-h1 {
-    color: #1f2937;
+form {
+    display: flex;
+    flex-direction: column;
+    gap: 10px;
 }
 
-p {
-    color: #555;
+input,
+select,
+button {
+    padding: 10px;
+    font-size: 16px;
+}
+
+button {
+    cursor: pointer;
+}
+
+ul {
+    padding: 0;
+}
+
+li {
+    list-style: none;
+    padding: 10px;
+    margin-bottom: 8px;
+    border-radius: 5px;
+}
+
+.receita {
+    color: green;
+    background-color: #e8f5e9;
+}
+
+.despesa {
+    color: red;
+    background-color: #ffebee;
 }
