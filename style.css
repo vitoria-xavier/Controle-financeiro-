@@ -5,7 +5,7 @@
 body {
     font-family: Arial, sans-serif;
     background-color: #f4f6f8;
-    max-width: 700px;
+    max-width: 900px;
     margin: 0 auto;
     padding: 30px 20px;
     color: #222;
@@ -13,60 +13,77 @@ body {
 
 h1 {
     text-align: center;
-    margin-bottom: 25px;
+    margin-bottom: 30px;
+    font-size: 32px;
 }
 
 h2 {
     margin-top: 25px;
 }
 
-/* Resumo financeiro */
+/* RESUMO */
 
 #resumo {
     background-color: white;
     padding: 20px;
-    border-radius: 12px;
+    border-radius: 14px;
     margin-bottom: 25px;
-    box-shadow: 0 2px 8px rgba(0, 0, 0, 0.08);
+    box-shadow: 0 3px 12px rgba(0, 0, 0, 0.08);
 }
 
 #resumo h2 {
     margin-top: 0;
+    margin-bottom: 20px;
 }
 
-#total-receitas,
-#total-despesas,
-#saldo {
-    padding: 12px;
-    border-radius: 8px;
-    font-weight: bold;
+.cards-resumo {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 15px;
 }
 
-#total-receitas {
-    color: green;
-    background-color: #e8f5e9;
-}
-
-#total-despesas {
-    color: red;
-    background-color: #ffebee;
-}
-
-#saldo {
-    color: #1565c0;
-    background-color: #e3f2fd;
-}
-
-/* Formulário */
-
-form {
-    background-color: white;
+.card {
     padding: 20px;
     border-radius: 12px;
     display: flex;
     flex-direction: column;
     gap: 10px;
-    box-shadow: 0 2px 8px rgba(0, 0, 0, 0.08);
+}
+
+.card span {
+    font-size: 14px;
+    font-weight: bold;
+}
+
+.card strong {
+    font-size: 22px;
+}
+
+.receita-card {
+    color: green;
+    background-color: #e8f5e9;
+}
+
+.despesa-card {
+    color: red;
+    background-color: #ffebee;
+}
+
+.saldo-card {
+    color: #1565c0;
+    background-color: #e3f2fd;
+}
+
+/* FORMULÁRIO */
+
+form {
+    background-color: white;
+    padding: 20px;
+    border-radius: 14px;
+    display: flex;
+    flex-direction: column;
+    gap: 10px;
+    box-shadow: 0 3px 12px rgba(0, 0, 0, 0.08);
 }
 
 input,
@@ -94,7 +111,7 @@ button:hover {
     opacity: 0.9;
 }
 
-/* Lançamentos */
+/* LANÇAMENTOS */
 
 #lista-lancamentos {
     padding: 0;
@@ -115,4 +132,26 @@ button:hover {
     background-color: #555;
     padding: 8px 10px;
     font-size: 14px;
+}
+
+/* CELULAR */
+
+@media (max-width: 600px) {
+
+    body {
+        padding: 20px 15px;
+    }
+
+    h1 {
+        font-size: 26px;
+    }
+
+    .cards-resumo {
+        grid-template-columns: 1fr;
+    }
+
+    .card strong {
+        font-size: 20px;
+    }
+
 }
