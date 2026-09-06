@@ -1,5 +1,5 @@
-
 const formulario = document.querySelector("form");
+const listaLancamentos = document.querySelector("#lista-lancamentos");
 
 formulario.addEventListener("submit", function(event) {
 
@@ -9,8 +9,13 @@ formulario.addEventListener("submit", function(event) {
     const valor = document.querySelector("#valor").value;
     const tipo = document.querySelector("#tipo").value;
 
-    console.log("Descrição:", descricao);
-    console.log("Valor:", valor);
-    console.log("Tipo:", tipo);
+    const novoLancamento = document.createElement("li");
+
+    novoLancamento.textContent =
+        descricao + " - R$ " + valor + " - " + tipo;
+
+    listaLancamentos.appendChild(novoLancamento);
+
+    formulario.reset();
 
 });
