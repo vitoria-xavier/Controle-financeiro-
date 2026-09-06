@@ -1,4 +1,3 @@
-
 const formulario = document.querySelector("form");
 const listaLancamentos = document.querySelector("#lista-lancamentos");
 const saldoElemento = document.querySelector("#saldo");
@@ -14,6 +13,12 @@ formulario.addEventListener("submit", function(event) {
     const tipo = document.querySelector("#tipo").value;
 
     const novoLancamento = document.createElement("li");
+
+    if (tipo === "receita") {
+        novoLancamento.classList.add("receita");
+    } else {
+        novoLancamento.classList.add("despesa");
+    }
 
     novoLancamento.textContent =
         descricao + " - R$ " + valor.toFixed(2) + " - " + tipo;
