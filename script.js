@@ -7,6 +7,13 @@ const saldoElemento = document.querySelector("#saldo");
 
 let lancamentos = JSON.parse(localStorage.getItem("lancamentos")) || [];
 
+function formatarMoeda(valor) {
+    return valor.toLocaleString("pt-BR", {
+        style: "currency",
+        currency: "BRL"
+    });
+}
+
 function atualizarTela() {
 
     listaLancamentos.innerHTML = "";
@@ -20,8 +27,8 @@ function atualizarTela() {
 
         novoLancamento.textContent =
             lancamento.descricao +
-            " - R$ " +
-            lancamento.valor.toFixed(2) +
+            " - " +
+            formatarMoeda(lancamento.valor) +
             " - " +
             lancamento.tipo;
 
@@ -66,13 +73,13 @@ function atualizarTela() {
     const saldo = totalReceitas - totalDespesas;
 
     totalReceitasElemento.textContent =
-        "Receitas: R$ " + totalReceitas.toFixed(2);
+        "Receitas: " + formatarMoeda(totalReceitas);
 
     totalDespesasElemento.textContent =
-        "Despesas: R$ " + totalDespesas.toFixed(2);
+        "Despesas: " + formatarMoeda(totalDespesas);
 
     saldoElemento.textContent =
-        "Saldo: R$ " + saldo.toFixed(2);
+        "Saldo: " + formatarMoeda(saldo);
 }
 
 formulario.addEventListener("submit", function(event) {
