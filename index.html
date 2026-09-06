@@ -1,120 +1,82 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
 
-const formulario = document.querySelector("form");
-const listaLancamentos = document.querySelector("#lista-lancamentos");
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
 
-const totalReceitasElemento = document.querySelector("#total-receitas");
-const totalDespesasElemento = document.querySelector("#total-despesas");
-const saldoElemento = document.querySelector("#saldo");
+    <title>Controle Financeiro</title>
 
-let lancamentos = JSON.parse(localStorage.getItem("lancamentos")) || [];
+    <link rel="stylesheet" href="style.css">
+</head>
 
-function atualizarTela() {
+<body>
 
-    listaLancamentos.innerHTML = "";
+    <h1>Controle Financeiro</h1>
 
-    let totalReceitas = 0;
-    let totalDespesas = 0;
+    <div id="resumo">
 
-    lancamentos.forEach(function(lancamento, index) {
+        <h2>Resumo financeiro</h2>
 
-        const novoLancamento = document.createElement("li");
+        <p id="total-receitas">Receitas: R$ 0,00</p>
 
-        novoLancamento.textContent =
-            lancamento.descricao +
-            " - R$ " +
-            lancamento.valor.toFixed(2) +
-            " - " +
-            lancamento.tipo;
+        <p id="total-despesas">Despesas: R$ 0,00</p>
 
-        if (lancamento.tipo === "receita") {
+        <p id="saldo">Saldo: R$ 0,00</p>
 
-            novoLancamento.style.color = "green";
-            novoLancamento.style.backgroundColor = "#e8f5e9";
+    </div>
 
-            totalReceitas += lancamento.valor;
+    <p>
+        Meu primeiro projeto desenvolvido durante meus estudos
+        de Análise e Desenvolvimento de Sistemas.
+    </p>
 
-        } else {
+    <h2>Novo lançamento</h2>
 
-            novoLancamento.style.color = "red";
-            novoLancamento.style.backgroundColor = "#ffebee";
+    <form>
 
-            totalDespesas += lancamento.valor;
-        }
+        <label for="descricao">Descrição</label>
 
-        const botaoExcluir = document.createElement("button");
+        <input
+            type="text"
+            id="descricao"
+            placeholder="Ex: Salário"
+        >
 
-        botaoExcluir.textContent = "🗑️ Excluir";
+        <label for="valor">Valor</label>
 
-        botaoExcluir.addEventListener("click", function() {
+        <input
+            type="number"
+            id="valor"
+            placeholder="Ex: 1500"
+        >
 
-            lancamentos.splice(index, 1);
+        <label for="tipo">Tipo</label>
 
-            localStorage.setItem(
-                "lancamentos",
-                JSON.stringify(lancamentos)
-            );
+        <select id="tipo">
 
-            atualizarTela();
+            <option value="receita">
+                Receita
+            </option>
 
-        });
+            <option value="despesa">
+                Despesa
+            </option>
 
-        novoLancamento.appendChild(botaoExcluir);
+        </select>
 
-        listaLancamentos.appendChild(novoLancamento);
+        <button type="submit">
+            Adicionar lançamento
+        </button>
 
-    });
+    </form>
 
-    const saldo = totalReceitas - totalDespesas;
+    <h2>Lançamentos</h2>
 
-    totalReceitasElemento.textContent =
-        "Receitas: R$ " + totalReceitas.toFixed(2);
+    <ul id="lista-lancamentos"></ul>
 
-    totalDespesasElemento.textContent =
-        "Despesas: R$ " + totalDespesas.toFixed(2);
+    <script src="script.js"></script>
 
-    saldoElemento.textContent =
-        "Saldo: R$ " + saldo.toFixed(2);
-}
+</body>
 
-formulario.addEventListener("submit", function(event) {
-
-    event.preventDefault();
-
-    const descricao =
-        document.querySelector("#descricao").value.trim();
-
-    const valor =
-        Number(document.querySelector("#valor").value);
-
-    const tipo =
-        document.querySelector("#tipo").value;
-
-    if (descricao === "" || valor <= 0) {
-
-        alert(
-            "Preencha a descrição e informe um valor maior que zero."
-        );
-
-        return;
-    }
-
-    const novoLancamento = {
-        descricao: descricao,
-        valor: valor,
-        tipo: tipo
-    };
-
-    lancamentos.push(novoLancamento);
-
-    localStorage.setItem(
-        "lancamentos",
-        JSON.stringify(lancamentos)
-    );
-
-    atualizarTela();
-
-    formulario.reset();
-
-});
-
-atualizarTela();
+                </html>
