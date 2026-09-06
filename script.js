@@ -1,3 +1,4 @@
+
 const formulario = document.querySelector("form");
 const listaLancamentos = document.querySelector("#lista-lancamentos");
 
