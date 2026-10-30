@@ -4,7 +4,8 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <meta name="description" content="Vitória Xavier | Desenvolvimento de Soluções Digitais, Excel, Planilhas e Sites.">
+    <meta name="description" content="Vitória Xavier | Desenvolvimento de Soluções Digitais, Excel, Planilhas e Desenvolvimento Web.">
+    <meta name="theme-color" content="#0b1120">
     <title>Vitória Xavier | Soluções Digitais</title>
 
     <style>
@@ -22,7 +23,11 @@
             font-family: Arial, sans-serif;
             background: #0b1120;
             color: #e5e7eb;
-            line-height: 1.6;
+            line-height: 1.7;
+        }
+
+        a {
+            transition: 0.3s ease;
         }
 
         header {
@@ -31,18 +36,28 @@
             justify-content: space-between;
             align-items: center;
             border-bottom: 1px solid #263247;
+            position: sticky;
+            top: 0;
+            z-index: 10;
+            background: rgba(11, 17, 32, 0.96);
+            backdrop-filter: blur(12px);
         }
 
         .logo {
-            font-size: 22px;
+            font-size: 25px;
             font-weight: bold;
             color: #38bdf8;
+        }
+
+        nav {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 22px;
         }
 
         nav a {
             color: #cbd5e1;
             text-decoration: none;
-            margin-left: 22px;
             font-size: 14px;
         }
 
@@ -51,24 +66,24 @@
         }
 
         .hero {
-            padding: 110px 8%;
-            max-width: 1100px;
+            padding: 120px 8%;
+            max-width: 1200px;
             margin: auto;
         }
 
         .tag {
             color: #38bdf8;
             font-weight: bold;
-            font-size: 14px;
+            font-size: 13px;
             letter-spacing: 2px;
             text-transform: uppercase;
         }
 
         h1 {
-            font-size: clamp(35px, 6vw, 58px);
+            font-size: clamp(36px, 6vw, 65px);
             line-height: 1.15;
-            margin: 20px 0;
-            color: #ffffff;
+            margin: 22px 0;
+            color: white;
         }
 
         h1 span {
@@ -76,26 +91,27 @@
         }
 
         .hero p {
-            max-width: 650px;
+            max-width: 680px;
             color: #94a3b8;
-            font-size: 17px;
+            font-size: 18px;
         }
 
         .buttons {
             display: flex;
             gap: 15px;
-            margin-top: 30px;
+            margin-top: 32px;
             flex-wrap: wrap;
         }
 
         .btn {
-            padding: 13px 22px;
+            display: inline-block;
+            padding: 13px 23px;
             border-radius: 8px;
             text-decoration: none;
             font-weight: bold;
             background: #38bdf8;
             color: #082f49;
-            transition: 0.3s;
+            border: 1px solid #38bdf8;
         }
 
         .btn:hover {
@@ -105,14 +121,19 @@
 
         .btn-outline {
             background: transparent;
-            border: 1px solid #38bdf8;
             color: #38bdf8;
+        }
+
+        .btn-outline:hover {
+            background: #38bdf8;
+            color: #082f49;
         }
 
         section {
             padding: 75px 8%;
             max-width: 1200px;
             margin: auto;
+            scroll-margin-top: 85px;
         }
 
         .section-title {
@@ -141,8 +162,8 @@
         .card {
             background: #151f32;
             border: 1px solid #263247;
-            padding: 25px;
-            border-radius: 12px;
+            padding: 27px;
+            border-radius: 14px;
             transition: 0.3s;
         }
 
@@ -154,6 +175,7 @@
         .card h3 {
             color: #38bdf8;
             margin-bottom: 12px;
+            font-size: 19px;
         }
 
         .card p {
@@ -176,20 +198,73 @@
             font-size: 14px;
         }
 
-        .project {
-            max-width: 750px;
+        .project-card {
+            background: linear-gradient(145deg, #151f32, #101a2d);
+            border: 1px solid #263247;
+            padding: 32px;
+            border-radius: 16px;
+            max-width: 850px;
+            transition: 0.3s;
         }
 
-        .project a {
-            display: inline-block;
-            margin-top: 20px;
+        .project-card:hover {
+            border-color: #38bdf8;
+            transform: translateY(-4px);
+        }
+
+        .project-label {
+            color: #38bdf8;
+            font-size: 12px;
+            font-weight: bold;
+            letter-spacing: 1.5px;
+            text-transform: uppercase;
+        }
+
+        .project-card h3 {
+            color: white;
+            font-size: 25px;
+            margin: 12px 0;
+        }
+
+        .project-card p {
+            color: #94a3b8;
+            font-size: 15px;
+        }
+
+        .features {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 10px;
+            margin: 22px 0;
+        }
+
+        .feature {
+            color: #bae6fd;
+            background: #1e293b;
+            border: 1px solid #334155;
+            border-radius: 6px;
+            padding: 6px 11px;
+            font-size: 12px;
+        }
+
+        .project-tech {
+            color: #64748b;
+            font-size: 13px;
+            margin-bottom: 22px;
+        }
+
+        .project-buttons {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 12px;
         }
 
         .contact {
             text-align: center;
             background: #151f32;
-            border-radius: 15px;
-            padding: 50px 25px;
+            border: 1px solid #263247;
+            border-radius: 16px;
+            padding: 55px 25px;
         }
 
         .contact p {
@@ -209,15 +284,48 @@
             header {
                 flex-direction: column;
                 gap: 15px;
+                padding: 18px 5%;
+            }
+
+            nav {
+                justify-content: center;
+                gap: 12px;
             }
 
             nav a {
-                margin: 0 7px;
                 font-size: 12px;
             }
 
             .hero {
-                padding-top: 75px;
+                padding: 85px 7%;
+            }
+
+            section {
+                padding: 60px 7%;
+            }
+
+            .section-title {
+                font-size: 28px;
+            }
+
+            .project-card {
+                padding: 23px;
+            }
+
+            .buttons .btn,
+            .project-buttons .btn {
+                text-align: center;
+                width: 100%;
+            }
+        }
+
+        @media (prefers-reduced-motion: reduce) {
+            html {
+                scroll-behavior: auto;
+            }
+
+            * {
+                transition: none !important;
             }
         }
     </style>
@@ -225,177 +333,223 @@
 
 <body>
 
-    <header>
-        <div class="logo">VX.</div>
+<header>
+    <div class="logo">VX.</div>
 
-        <nav>
-            <a href="#sobre">Sobre</a>
-            <a href="#servicos">Soluções</a>
-            <a href="#habilidades">Habilidades</a>
-            <a href="#projetos">Projetos</a>
-            <a href="#contato">Contato</a>
-        </nav>
-    </header>
+    <nav aria-label="Navegação principal">
+        <a href="#sobre">Sobre</a>
+        <a href="#servicos">Soluções</a>
+        <a href="#habilidades">Habilidades</a>
+        <a href="#projetos">Projetos</a>
+        <a href="#contato">Contato</a>
+    </nav>
+</header>
 
-    <main>
+<main>
 
-        <section class="hero">
-            <span class="tag">Tecnologia • Organização • Inovação</span>
+    <section class="hero">
+        <span class="tag">Tecnologia • Desenvolvimento • Soluções</span>
 
-            <h1>
-                Vitória Xavier<br>
-                <span>Desenvolvimento de Soluções Digitais</span>
-            </h1>
+        <h1>
+            Olá, eu sou Vitória Xavier.<br>
+            <span>Desenvolvimento de Soluções Digitais</span>
+        </h1>
+
+        <p>
+            Transformo ideias e necessidades em soluções digitais
+            funcionais, unindo tecnologia, organização e criatividade.
+            Excel, planilhas e desenvolvimento web para resolver
+            problemas do dia a dia.
+        </p>
+
+        <div class="buttons">
+            <a href="#projetos" class="btn">
+                Conhecer projetos
+            </a>
+
+            <a href="#contato" class="btn btn-outline">
+                Entrar em contato
+            </a>
+        </div>
+    </section>
+
+    <section id="sobre">
+        <h2 class="section-title">Sobre mim</h2>
+
+        <p class="about">
+            Sou Vitória Xavier, estudante de Análise e Desenvolvimento
+            de Sistemas, com formação técnica em Farmácia e experiência
+            profissional em diferentes áreas.
+
+            Tenho domínio de Excel, Word e ferramentas de produtividade,
+            além de conhecimentos em desenvolvimento web e tecnologias
+            voltadas à criação de soluções digitais.
+
+            Busco unir organização, tecnologia e criatividade para
+            desenvolver projetos que facilitem processos e resolvam
+            problemas reais.
+
+            Estou em constante aprendizado e aberta a oportunidades
+            profissionais, estágios, projetos e novos desafios
+            na área de tecnologia.
+        </p>
+    </section>
+
+    <section id="servicos">
+        <h2 class="section-title">Soluções digitais</h2>
+
+        <p class="section-description">
+            Tecnologia aplicada às necessidades do dia a dia.
+        </p>
+
+        <div class="cards">
+
+            <div class="card">
+                <h3>Excel e Planilhas</h3>
+                <p>
+                    Criação e organização de planilhas,
+                    controles financeiros, relatórios e
+                    automatização de tarefas.
+                </p>
+            </div>
+
+            <div class="card">
+                <h3>Desenvolvimento Web</h3>
+                <p>
+                    Desenvolvimento de páginas e sites responsivos
+                    utilizando HTML, CSS e JavaScript.
+                </p>
+            </div>
+
+            <div class="card">
+                <h3>Soluções Digitais</h3>
+                <p>
+                    Organização de informações e criação de
+                    ferramentas digitais para facilitar
+                    atividades profissionais e pessoais.
+                </p>
+            </div>
+
+        </div>
+    </section>
+
+    <section id="habilidades">
+        <h2 class="section-title">Habilidades</h2>
+
+        <p class="section-description">
+            Ferramentas e tecnologias que fazem parte
+            da minha trajetória profissional.
+        </p>
+
+        <div class="skills">
+            <span class="skill">Excel</span>
+            <span class="skill">Word</span>
+            <span class="skill">PowerPoint</span>
+            <span class="skill">Power BI</span>
+            <span class="skill">HTML5</span>
+            <span class="skill">CSS3</span>
+            <span class="skill">JavaScript</span>
+            <span class="skill">Python</span>
+            <span class="skill">Java</span>
+            <span class="skill">MySQL</span>
+            <span class="skill">Git</span>
+            <span class="skill">GitHub</span>
+        </div>
+    </section>
+
+    <section id="projetos">
+        <h2 class="section-title">Projetos</h2>
+
+        <p class="section-description">
+            Projetos desenvolvidos para colocar conhecimentos
+            em prática e resolver problemas reais.
+        </p>
+
+        <div class="project-card">
+
+            <span class="project-label">
+                Projeto em destaque
+            </span>
+
+            <h3>Controle Financeiro</h3>
 
             <p>
-                Excel, planilhas e sites: transformando necessidades
-                do dia a dia em soluções digitais práticas e funcionais.
+                Aplicação web desenvolvida para organizar e acompanhar
+                movimentações financeiras de forma simples e intuitiva.
+
+                Permite registrar receitas e despesas, calcular
+                automaticamente o saldo e acompanhar um resumo
+                financeiro. Os dados são armazenados localmente
+                no navegador.
             </p>
 
-            <div class="buttons">
-                <a href="#projetos" class="btn">Ver meus projetos</a>
-                <a href="#contato" class="btn btn-outline">Entrar em contato</a>
+            <div class="features">
+                <span class="feature">Cadastro de receitas</span>
+                <span class="feature">Cadastro de despesas</span>
+                <span class="feature">Cálculo automático</span>
+                <span class="feature">Resumo financeiro</span>
+                <span class="feature">Armazenamento local</span>
+                <span class="feature">Layout responsivo</span>
             </div>
-        </section>
 
-        <section id="sobre">
-            <h2 class="section-title">Sobre mim</h2>
-
-            <p class="about">
-                Sou Vitória Xavier, estudante de Análise e Desenvolvimento
-                de Sistemas e profissional com experiência em ferramentas
-                de produtividade, organização e tecnologia.
-
-                Tenho domínio de Excel, Word e criação de planilhas,
-                além de conhecimentos em desenvolvimento web.
-
-                Busco unir tecnologia e criatividade para desenvolver
-                soluções que facilitem processos, organizem informações
-                e resolvam problemas reais.
-
-                Estou em constante aprendizado e aberta a oportunidades
-                profissionais, projetos e novos desafios na área de tecnologia.
-            </p>
-        </section>
-
-        <section id="servicos">
-            <h2 class="section-title">Soluções digitais</h2>
-
-            <p class="section-description">
-                Algumas das soluções que posso desenvolver.
-            </p>
-
-            <div class="cards">
-
-                <div class="card">
-                    <h3>Excel e Planilhas</h3>
-                    <p>
-                        Criação e organização de planilhas,
-                        controles financeiros, relatórios e
-                        automatização de tarefas.
-                    </p>
-                </div>
-
-                <div class="card">
-                    <h3>Desenvolvimento Web</h3>
-                    <p>
-                        Criação de páginas, sites responsivos
-                        e aplicações utilizando tecnologias web.
-                    </p>
-                </div>
-
-                <div class="card">
-                    <h3>Soluções Digitais</h3>
-                    <p>
-                        Organização de informações e desenvolvimento
-                        de soluções para facilitar atividades
-                        profissionais e pessoais.
-                    </p>
-                </div>
-
+            <div class="project-tech">
+                Tecnologias: HTML5 • CSS3 • JavaScript • LocalStorage
             </div>
-        </section>
 
-        <section id="habilidades">
-            <h2 class="section-title">Habilidades</h2>
-
-            <p class="section-description">
-                Ferramentas e tecnologias que fazem parte
-                da minha trajetória profissional.
-            </p>
-
-            <div class="skills">
-                <span class="skill">Excel</span>
-                <span class="skill">Word</span>
-                <span class="skill">PowerPoint</span>
-                <span class="skill">Power BI</span>
-                <span class="skill">HTML</span>
-                <span class="skill">CSS</span>
-                <span class="skill">JavaScript</span>
-                <span class="skill">Python</span>
-                <span class="skill">Java</span>
-                <span class="skill">MySQL</span>
-                <span class="skill">Git</span>
-                <span class="skill">GitHub</span>
-            </div>
-        </section>
-
-        <section id="projetos">
-            <h2 class="section-title">Projetos</h2>
-
-            <p class="section-description">
-                Conheça alguns dos meus trabalhos.
-            </p>
-
-            <div class="card project">
-                <h3>Controle Financeiro</h3>
-
-                <p>
-                    Projeto desenvolvido para organizar e acompanhar
-                    movimentações financeiras, utilizando HTML,
-                    CSS e JavaScript.
-
-                    A aplicação utiliza armazenamento local
-                    para manter os dados no navegador.
-                </p>
+            <div class="project-buttons">
 
                 <a
-                    href="https://github.com/vitoria-xavier"
+                    href="https://vitoria-xavier.github.io/Controle-financeiro-/"
                     target="_blank"
                     rel="noopener noreferrer"
                     class="btn"
                 >
-                    Ver no GitHub
+                    Acessar projeto
                 </a>
-            </div>
-        </section>
-
-        <section id="contato">
-            <div class="contact">
-                <h2 class="section-title">Vamos conversar?</h2>
-
-                <p>
-                    Estou aberta a oportunidades, projetos
-                    e parcerias na área de tecnologia.
-                </p>
 
                 <a
-                    href="https://github.com/vitoria-xavier"
+                    href="https://github.com/vitoria-xavier/Controle-financeiro-"
                     target="_blank"
                     rel="noopener noreferrer"
-                    class="btn"
+                    class="btn btn-outline"
                 >
-                    Meu GitHub
+                    Ver código-fonte
                 </a>
+
             </div>
-        </section>
+        </div>
+    </section>
 
-    </main>
+    <section id="contato">
+        <div class="contact">
 
-    <footer>
-        © 2026 Vitória Xavier. Todos os direitos reservados.
-    </footer>
+            <h2 class="section-title">Vamos conversar?</h2>
+
+            <p>
+                Estou aberta a oportunidades de estágio,
+                vagas na área de tecnologia, projetos
+                e parcerias profissionais.
+            </p>
+
+            <a
+                href="https://github.com/vitoria-xavier"
+                target="_blank"
+                rel="noopener noreferrer"
+                class="btn"
+            >
+                Conheça meu GitHub
+            </a>
+
+        </div>
+    </section>
+
+</main>
+
+<footer>
+    © 2026 Vitória Xavier. Todos os direitos reservados.
+</footer>
 
 </body>
 </html>
+
 
